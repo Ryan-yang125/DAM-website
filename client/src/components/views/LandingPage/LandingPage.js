@@ -6,7 +6,7 @@ import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
 import { Category, Period } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
-
+import bgVideo from "../../../assets/video/bg.mp4";
 const { Meta } = Card;
 
 function LandingPage() {
@@ -113,10 +113,23 @@ function LandingPage() {
 
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
+      <video
+        loop
+        autoPlay
+        style={{
+          objectFit: "cover",
+          width: "100vw",
+          height: "100vh",
+          position: "fixed",
+          top: 0,
+          left: 0,
+        }}
+      >
+        <source src={bgVideo} type="video/mp4" />
+      </video>
       <div style={{ textAlign: "center" }}>
         <h2> Explore Here </h2>
       </div>
-
       {/* Filter  */}
 
       <Row gutter={[16, 16]}>
