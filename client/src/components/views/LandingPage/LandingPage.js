@@ -4,7 +4,7 @@ import { Icon, Col, Card, Row } from "antd";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
-import { continents, price } from "./Sections/Datas";
+import { Category } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
 
 const { Meta } = Card;
@@ -17,8 +17,7 @@ function LandingPage() {
   const [SearchTerms, setSearchTerms] = useState("");
 
   const [Filters, setFilters] = useState({
-    continents: [],
-    price: [],
+    category: [],
   });
 
   useEffect(() => {
@@ -28,7 +27,7 @@ function LandingPage() {
     };
 
     getProducts(variables);
-  }, []);
+  }, []); //only useEffect when Mount and willUnMount
 
   const getProducts = (variables) => {
     Axios.post("/api/product/getProducts", variables).then((response) => {
@@ -87,28 +86,10 @@ function LandingPage() {
     setSkip(0);
   };
 
-  const handlePrice = (value) => {
-    const data = price;
-    let array = [];
-
-    for (let key in data) {
-      if (data[key]._id === parseInt(value, 10)) {
-        array = data[key].array;
-      }
-    }
-    console.log("array", array);
-    return array;
-  };
-
   const handleFilters = (filters, category) => {
     const newFilters = { ...Filters };
 
     newFilters[category] = filters;
-
-    if (category === "price") {
-      let priceValues = handlePrice(filters);
-      newFilters[category] = priceValues;
-    }
 
     console.log(newFilters);
 
@@ -141,14 +122,8 @@ function LandingPage() {
       <Row gutter={[16, 16]}>
         <Col lg={12} xs={24}>
           <CheckBox
-            list={continents}
-            handleFilters={(filters) => handleFilters(filters, "continents")}
-          />
-        </Col>
-        <Col lg={12} xs={24}>
-          <RadioBox
-            list={price}
-            handleFilters={(filters) => handleFilters(filters, "price")}
+            list={Category}
+            handleFilters={(filters) => handleFilters(filters, "category")}
           />
         </Col>
       </Row>
