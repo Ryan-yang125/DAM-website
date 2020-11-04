@@ -35,11 +35,11 @@ function CheckBox(props) {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </React.Fragment>
     ));
-
+  const header = props.list[0].name === "Animals" ? "Category" : "Period";
   return (
     <div>
       <Collapse defaultActiveKey={["0"]}>
-        <Panel header="Category" key="1">
+        <Panel header={header} key="1">
           {renderCheckboxLists()}
         </Panel>
       </Collapse>

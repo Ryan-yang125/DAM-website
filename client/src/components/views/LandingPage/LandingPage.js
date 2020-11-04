@@ -4,7 +4,7 @@ import { Icon, Col, Card, Row } from "antd";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
-import { Category } from "./Sections/Datas";
+import { Category, Period } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
 
 const { Meta } = Card;
@@ -70,7 +70,7 @@ function LandingPage() {
             </a>
           }
         >
-          <Meta title={product.title} description={`$${product.price}`} />
+          <Meta title={product.title} description={product.description} />
         </Card>
       </Col>
     );
@@ -124,6 +124,12 @@ function LandingPage() {
           <CheckBox
             list={Category}
             handleFilters={(filters) => handleFilters(filters, "category")}
+          />
+        </Col>
+        <Col lg={12} xs={24}>
+          <CheckBox
+            list={Period}
+            handleFilters={(filters) => handleFilters(filters, "period")}
           />
         </Col>
       </Row>
