@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Descriptions } from "antd";
-
+import { StarTwoTone } from "@ant-design/icons";
 function ProductInfo(props) {
   const [Product, setProduct] = useState({});
 
@@ -34,7 +34,8 @@ function ProductInfo(props) {
           type="danger"
           onClick={addToCarthandler}
         >
-          Add to Cart
+          Add to Collections!
+          <StarTwoTone twoToneColor="#eb2f96" />
         </Button>
       </div>
     </div>

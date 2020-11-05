@@ -33,7 +33,10 @@ function RightMenu(props) {
     );
   } else {
     return (
-      <Menu mode={props.mode}>
+      <Menu
+        mode={props.mode}
+        style={{ backgroundColor: "#FFEEE4s", opacity: 0.5 }}
+      >
         <Menu.Item key="history">
           <a href="/history">History</a>
         </Menu.Item>
