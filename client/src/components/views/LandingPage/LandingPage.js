@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Icon, Col, Card, Row } from "antd";
+import { Icon, Col, Card, Row, Button } from "antd";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
@@ -18,6 +18,7 @@ function LandingPage() {
 
   const [Filters, setFilters] = useState({
     category: [],
+    period: [],
   });
 
   useEffect(() => {
@@ -126,6 +127,7 @@ function LandingPage() {
         }}
       >
         <source src={bgVideo} type="video/mp4" />
+        <source src={bgVideo} type="video/opgg" />
       </video>
       <div style={{ textAlign: "center" }}>
         <h2> Explore Here </h2>
@@ -179,7 +181,7 @@ function LandingPage() {
 
       {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <button onClick={onLoadMore}>Load More</button>
+          <Button onClick={onLoadMore}>Load More</Button>
         </div>
       )}
     </div>
