@@ -1,43 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { Button, Descriptions } from "antd";
-import { StarTwoTone } from "@ant-design/icons";
+import { Typography } from "antd";
+import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 function ProductInfo(props) {
-  const [Product, setProduct] = useState({});
+  const { Title, Paragraph, Text, Link } = Typography;
 
+  const [Product, setProduct] = useState({});
+  const [IfLikes, setIfLikes] = useState(false);
   useEffect(() => {
     setProduct(props.detail);
   }, [props.detail]);
 
   const addToCarthandler = () => {
+    setIfLikes(!IfLikes);
     props.addToCart(props.detail._id);
   };
-
+  const likeStyle = {
+    fontSize: 30,
+    marginLeft: 40,
+    marginTop: 10,
+  };
   return (
     <div>
-      <Descriptions title="Product Info">
-        <Descriptions.Item label="Title"> {Product.title}</Descriptions.Item>
-        <Descriptions.Item label="Artist">{Product.artist}</Descriptions.Item>
-        <Descriptions.Item label="Likes"> {Product.likes}</Descriptions.Item>
-        <Descriptions.Item label="Description">
-          {" "}
-          {Product.description}
-        </Descriptions.Item>
-      </Descriptions>
-
-      <br />
-      <br />
-      <br />
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button
-          size="large"
-          shape="round"
-          type="danger"
-          onClick={addToCarthandler}
-        >
-          Add to Collections!
-          <StarTwoTone twoToneColor="#eb2f96" />
-        </Button>
+      <div className="info" style={{ display: "flex" }}>
+        <div className="basic-info">
+          <div>
+            <h3>{`${Product.artist || "Unknown"}`}</h3>
+          </div>
+          <div>
+            <h4>{`${Product.title || "Unknown"}`}</h4>
+          </div>
+        </div>
+        <div>
+          {IfLikes ? (
+            <HeartFilled onClick={addToCarthandler} style={likeStyle} />
+          ) : (
+            <HeartOutlined onClick={addToCarthandler} style={likeStyle} />
+          )}
+        </div>
       </div>
+      <br />
+      <Text>{Product.description}</Text>
     </div>
   );
 }

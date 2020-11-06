@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Axios from "axios";
-import { Icon, Col, Card, Row, Button } from "antd";
+import { Col, Card, Row, Button } from "antd";
+import { LoadingOutlined, HeartTwoTone } from "@ant-design/icons";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
+import { addToCart } from "../../../_actions/user_actions";
 import { Category, Period } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
 import bgVideo from "../../../assets/video/bg1.mp4";
 const { Meta } = Card;
 
 function LandingPage() {
+  const dispatch = useDispatch();
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
-  const [Limit, setLimit] = useState(8);
+  const [Limit, setLimit] = useState(9);
   const [PostSize, setPostSize] = useState();
   const [SearchTerms, setSearchTerms] = useState("");
 
@@ -29,6 +33,10 @@ function LandingPage() {
 
     getProducts(variables);
   }, []); //only useEffect when Mount and willUnMount
+
+  const addToCartHandler = (productId) => {
+    dispatch(addToCart(productId));
+  };
 
   const getProducts = (variables) => {
     Axios.post("/api/product/getProducts", variables).then((response) => {
@@ -61,9 +69,11 @@ function LandingPage() {
 
   const renderCards = Products.map((product, index) => {
     return (
-      <Col lg={6} md={8} xs={24}>
+      <Col lg={8} xs={24}>
         <Card
-          hoverable={true}
+          hoverable={false}
+          bordered={false}
+          loading={false}
           cover={
             <a href={`/product/${product._id}`}>
               {" "}
@@ -71,7 +81,17 @@ function LandingPage() {
             </a>
           }
         >
-          <Meta title={product.title} description={product.description} />
+          <Meta
+            title={product.title}
+            description={product.artist}
+            avatar={
+              <HeartTwoTone
+                twoToneColor="#000000"
+                style={{ fontSize: "20px" }}
+                onClick={() => addToCartHandler(product._id)}
+              />
+            }
+          />
         </Card>
       </Col>
     );
@@ -114,21 +134,6 @@ function LandingPage() {
 
   return (
     <div style={{ width: "75%", margin: "3rem auto" }}>
-      <video
-        loop
-        autoPlay
-        style={{
-          objectFit: "cover",
-          width: "100vw",
-          height: "100vh",
-          position: "fixed",
-          top: 0,
-          left: 0,
-        }}
-      >
-        <source src={bgVideo} type="video/mp4" />
-        <source src={bgVideo} type="video/opgg" />
-      </video>
       <div style={{ textAlign: "center" }}>
         <h2> Explore Here </h2>
       </div>
@@ -169,17 +174,17 @@ function LandingPage() {
             alignItems: "center",
           }}
         >
-          <h2>No post yet...</h2>
+          <LoadingOutlined style={{ fontSize: "100px" }} />
         </div>
       ) : (
         <div>
-          <Row gutter={[16, 16]}>{renderCards}</Row>
+          <Row glutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>{renderCards}</Row>
         </div>
       )}
       <br />
       <br />
 
-      {PostSize >= Limit && (
+      {PostSize > Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button onClick={onLoadMore}>Load More</Button>
         </div>

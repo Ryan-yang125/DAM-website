@@ -15,7 +15,7 @@ function Footer() {
     >
       <p>
         {" "}
-        Happy Explore!
+        Thanks for Threedscans Project initiated by Oliver Laric.
         <Icon type="smile" />
       </p>
     </div>

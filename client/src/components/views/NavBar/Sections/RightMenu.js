@@ -35,8 +35,11 @@ function RightMenu(props) {
     return (
       <Menu
         mode={props.mode}
-        style={{ backgroundColor: "#FFEEE4s", opacity: 0.5 }}
+        style={{ backgroundColor: "#FFEEE4s", opacity: 1.0 }}
       >
+        <Menu.Item key="landing">
+          <a href="/landing">Landing</a>
+        </Menu.Item>
         <Menu.Item key="history">
           <a href="/history">History</a>
         </Menu.Item>
