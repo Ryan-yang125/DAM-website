@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Typography } from "antd";
+import { Typography, notification } from "antd";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 function ProductInfo(props) {
   const { Title, Paragraph, Text, Link } = Typography;
@@ -12,6 +12,13 @@ function ProductInfo(props) {
 
   const addToCarthandler = () => {
     setIfLikes(!IfLikes);
+    notification.open({
+      message: `${
+        !IfLikes ? "❤️  Add to Collections!" : "💔  Remove from Collections!"
+      }`,
+      placement: "bottomLeft",
+      duration: 2.5,
+    });
     props.addToCart(props.detail._id);
   };
   const likeStyle = {

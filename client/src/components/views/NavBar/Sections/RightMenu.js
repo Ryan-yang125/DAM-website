@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Menu, Badge } from "antd";
-import { HeartTwoTone } from "@ant-design/icons";
+import { HeartTwoTone, HeartOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { USER_SERVER } from "../../../Config";
 import { withRouter } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function RightMenu(props) {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user); //TODO
 
   const logoutHandler = () => {
     axios.get(`${USER_SERVER}/logout`).then((response) => {
@@ -51,10 +51,7 @@ function RightMenu(props) {
         <Menu.Item key="cart" style={{ paddingBottom: 3 }}>
           <Badge count={user.userData && user.userData.cart.length}>
             <a href="/user/cart" style={{ marginRight: -22, color: "#667777" }}>
-              <HeartTwoTone
-                twoToneColor="#eb2f96"
-                style={{ fontSize: 30, marginBottom: 3 }}
-              />
+              <HeartOutlined style={{ fontSize: 30, marginBottom: 3 }} />
             </a>
           </Badge>
         </Menu.Item>

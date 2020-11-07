@@ -19,6 +19,9 @@ function UserCardBlock(props) {
             src={renderCartImage(product.images)}
           />
         </td>
+        <td>
+          <a href={`/product/${product._id}`}>Click</a>
+        </td>
         <td>{product.title}</td>
         <td>{product.artist} </td>
         <td style={{ width: 150 }}>
@@ -32,21 +35,7 @@ function UserCardBlock(props) {
       </tr>
     ));
 
-  return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Remove from Collections</th>
-          </tr>
-        </thead>
-        <tbody>{renderItems()}</tbody>
-      </table>
-    </div>
-  );
+  return <div>{renderItems()}</div>;
 }
 
 export default UserCardBlock;

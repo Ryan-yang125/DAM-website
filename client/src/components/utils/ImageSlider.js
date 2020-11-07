@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Carousel } from "antd";
-import { ScanOutlined } from "@ant-design/icons";
 
 function ImageSlider(props) {
   const [hovered, sethovered] = useState(false);
