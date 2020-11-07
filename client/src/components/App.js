@@ -12,7 +12,6 @@ import UploadProductPage from "./views/UploadProductPage/UploadProductPage";
 import DetailProductPage from "./views/DetailProductPage/DetailProductPage";
 import CartPage from "./views/CartPage/CartPage";
 import HistoryPage from "./views/HistoryPage/HistoryPage";
-// import "./App.css";
 import "fontsource-roboto";
 
 function App() {

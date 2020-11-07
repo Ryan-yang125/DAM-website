@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { getCartItems, removeCartItem } from "../../../_actions/user_actions";
 import ImageSlider from "../../utils/ImageSlider";
 
-import { Result, Empty } from "antd";
 function CartPage(props) {
   const dispatch = useDispatch();
 

@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { Row, Col, Card } from "antd";
-import { HeartOutlined } from "@ant-design/icons";
+import { Row, Col, Card, notification } from "antd";
+import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 function ImageSlider(props) {
   const { Meta } = Card;
   const [hovered, sethovered] = useState(false);
-  const addToCartHandler = (id) => {};
-
+  const [IfLikes, setIfLikes] = useState(false);
+  const addToCartHandler = () => {
+    setIfLikes(!IfLikes);
+    notification.open({
+      message: `${
+        !IfLikes ? "❤️  Add to Collections!" : "💔  Remove from Collections!"
+      }`,
+      placement: "bottomLeft",
+      duration: 2.5,
+    });
+  };
   return (
     <div>
       <Row glutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
@@ -41,10 +50,11 @@ function ImageSlider(props) {
                     title={product.title}
                     description={product.artist}
                     avatar={
-                      <HeartOutlined
-                        style={{ fontSize: "20px" }}
-                        onClick={() => addToCartHandler(product._id)}
-                      />
+                      IfLikes ? (
+                        <HeartFilled onClick={addToCartHandler} />
+                      ) : (
+                        <HeartOutlined onClick={addToCartHandler} />
+                      )
                     }
                   />
                 </Card>
