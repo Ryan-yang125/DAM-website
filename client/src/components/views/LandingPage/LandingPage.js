@@ -66,37 +66,6 @@ function LandingPage() {
     getProducts(variables);
     setSkip(skip);
   };
-
-  const renderCards = Products.map((product, index) => {
-    return (
-      <Col lg={8} xs={24}>
-        <Card
-          hoverable={false}
-          bordered={false}
-          loading={false}
-          cover={
-            <a href={`/product/${product._id}`}>
-              {" "}
-              <ImageSlider images={product.images} />
-            </a>
-          }
-        >
-          <Meta
-            title={product.title}
-            description={product.artist}
-            avatar={
-              <HeartTwoTone
-                twoToneColor="#000000"
-                style={{ fontSize: "20px" }}
-                onClick={() => addToCartHandler(product._id)}
-              />
-            }
-          />
-        </Card>
-      </Col>
-    );
-  });
-
   const showFilteredResults = (filters) => {
     const variables = {
       skip: 0,
@@ -178,7 +147,7 @@ function LandingPage() {
         </div>
       ) : (
         <div>
-          <Row glutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>{renderCards}</Row>
+          <ImageSlider products={Products} />
         </div>
       )}
       <br />
