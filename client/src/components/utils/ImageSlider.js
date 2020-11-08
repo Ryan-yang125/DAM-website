@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Row, Col, Card, notification } from "antd";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 function ImageSlider(props) {
   const { Meta } = Card;
+  const dispatch = useDispatch();
   const [hovered, sethovered] = useState(false);
   const [IfLikes, setIfLikes] = useState(false);
   const addToCartHandler = () => {
@@ -15,6 +17,7 @@ function ImageSlider(props) {
       duration: 2.5,
     });
   };
+  const removeFromCartHandler = () => {};
   return (
     <div>
       <Row glutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
