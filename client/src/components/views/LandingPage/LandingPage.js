@@ -6,14 +6,11 @@ import { LoadingOutlined, HeartTwoTone } from "@ant-design/icons";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
-import { addToCart } from "../../../_actions/user_actions";
 import { Category, Period } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
 import bgVideo from "../../../assets/video/bg1.mp4";
-const { Meta } = Card;
 
-function LandingPage() {
-  const dispatch = useDispatch();
+function LandingPage(props) {
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
   const [Limit, setLimit] = useState(9);
@@ -33,10 +30,6 @@ function LandingPage() {
 
     getProducts(variables);
   }, []); //only useEffect when Mount and willUnMount
-
-  const addToCartHandler = (productId) => {
-    dispatch(addToCart(productId));
-  };
 
   const getProducts = (variables) => {
     Axios.post("/api/product/getProducts", variables).then((response) => {
@@ -147,7 +140,7 @@ function LandingPage() {
         </div>
       ) : (
         <div>
-          <ImageSlider products={Products} />
+          <ImageSlider products={Products} userlikes={props.user.userData} />
         </div>
       )}
       <br />

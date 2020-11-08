@@ -1,5 +1,4 @@
 import React from "react";
-import { Icon } from "antd";
 
 function Footer() {
   return (
@@ -13,11 +12,7 @@ function Footer() {
         fontSize: "1rem",
       }}
     >
-      <p>
-        {" "}
-        Thanks for Threedscans Project initiated by Oliver Laric.
-        <Icon type="smile" />
-      </p>
+      <p> Thanks for threedscans project initiated by Oliver Laric.</p>
     </div>
   );
 }
