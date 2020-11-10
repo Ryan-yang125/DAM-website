@@ -19,24 +19,30 @@ const productSchema = mongoose.Schema(
       type: String,
     },
     period: {
-      type: Number,
-      default: 0,
+      type: String,
+      maxlength: 50,
     },
     images: {
       type: Array,
       default: [],
     },
+    objs: {
+      type: String,
+    },
+    material: {
+      type: String,
+      maxlength: 20,
+    },
     category: {
       type: Number,
       default: 1,
     },
-    likes: {
-      type: Number,
-      default: 0,
+    location: {
+      type: String,
     },
-    downloads: {
-      type: Number,
-      default: 0,
+    dimension: {
+      type: Object,
+      default: { length: "", width: "", height: "" },
     },
   },
   { timestamps: true }
