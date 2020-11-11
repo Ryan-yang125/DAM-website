@@ -37,6 +37,10 @@ const productSchema = mongoose.Schema(
       type: Number,
       default: 1,
     },
+    size: {
+      type: Number,
+      default: 1,
+    },
     location: {
       type: String,
     },

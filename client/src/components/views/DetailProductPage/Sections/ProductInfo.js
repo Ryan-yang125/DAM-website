@@ -48,10 +48,10 @@ function ProductInfo(props) {
       <div className="info" style={{ display: "flex" }}>
         <div className="basic-info">
           <div>
-            <h3>{`${Product.artist || "Placeholder"}`}</h3>
+            <h3>{`${Product.artist || "Oliver Laric."}`}</h3>
           </div>
           <div>
-            <h4>{`${Product.title || "Unknown"}`}</h4>
+            <h4>{`${Product.title || "Amonit"}`}</h4>
           </div>
         </div>
         <div>
@@ -73,23 +73,39 @@ function ProductInfo(props) {
         </div>
       </div>
       <br />
-      <Title level={4}>Introduction:</Title>
+      <h3>Introduction:</h3>
       <Text>{Product.description}</Text>
-      <Title level={4}>Dimensions:</Title>
-      <div>
-        <h4>{`${Product.dimensions}`}</h4>
+      <div style={{ display: "flex" }}>
+        <h4 style={{ fontWeight: "bolder" }}>Dimensions:&nbsp;</h4>
+        <div>
+          <h4 style={{ marginTop: "1px" }}>{`${
+            Product.dimensions || "45X50X60"
+          }`}</h4>
+        </div>
       </div>
-      <Title level={4}>Locations:</Title>
-      <div>
-        <h4>{`${Product.location}`}</h4>
+      <div style={{ display: "flex" }}>
+        <h4 style={{ fontWeight: "bolder" }}>Locations:&nbsp;</h4>
+        <div>
+          <h4 style={{ marginTop: "1px" }}>{`${
+            Product.location || "Utopia"
+          }`}</h4>
+        </div>
       </div>
-      <Title level={4}>Material:</Title>
-      <div>
-        <h4>{`${Product.material}`}</h4>
+      <div style={{ display: "flex" }}>
+        <h4 style={{ fontWeight: "bolder" }}>Material:&nbsp;</h4>
+        <div>
+          <h4 style={{ marginTop: "1px" }}>{`${
+            Product.material || "Stone Funk"
+          }`}</h4>
+        </div>
       </div>
-      <Title level={4}>Period:</Title>
-      <div>
-        <h4>{`${Product.period}`}</h4>
+      <div style={{ display: "flex" }}>
+        <h4 style={{ fontWeight: "bolder" }}>Period:&nbsp;</h4>
+        <div>
+          <h4 style={{ marginTop: "1px" }}>{`${
+            Product.period || "About 1800s"
+          }`}</h4>
+        </div>
       </div>
     </div>
   );

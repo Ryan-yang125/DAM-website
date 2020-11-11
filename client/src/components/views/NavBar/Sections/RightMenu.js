@@ -20,48 +20,58 @@ function RightMenu(props) {
     });
   };
   const itemStyle = {
-    fontStyle: "oblique 40deg",
+    fontStyle: "Roboto",
+    color: props.fontColor,
+    marginRight: "15px",
   };
   if (user.userData && !user.userData.isAuth) {
     return (
-      <Breadcrumb>
-        <Breadcrumb.Item key="mail">
-          <a href="/login">SignIn</a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item key="app">
-          <a href="/register">SignUp</a>
-        </Breadcrumb.Item>
-      </Breadcrumb>
+      <div>
+        <Breadcrumb separator=" ">
+          <Breadcrumb.Item key="mail">
+            <a href="/login" style={itemStyle}>
+              SIGNIN
+            </a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item key="app">
+            <a href="/register" style={itemStyle}>
+              SIGNUP
+            </a>
+          </Breadcrumb.Item>
+        </Breadcrumb>
+      </div>
     );
   } else {
     return (
-      <Breadcrumb style={{ color: "#ffffff", marginTop: "10px" }} separator=" ">
-        <Breadcrumb.Item key="landing">
-          <a href="/landing" style={itemStyle}>
-            EXPLORE
-          </a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item key="upload">
-          <a href="/product/upload" style={itemStyle}>
-            UPLOAD
-          </a>
-        </Breadcrumb.Item>
-
-        <Breadcrumb.Item key="cart">
-          <Badge count={user.userData && user.userData.cart.length}>
-            <a href="/user/cart" style={itemStyle}>
-              COLLECTIONS
-              <HeartOutlined style={itemStyle} />
+      <div>
+        <Breadcrumb separator=" ">
+          <Breadcrumb.Item key="landing">
+            <a href="/landing" style={itemStyle}>
+              EXPLORE
             </a>
-          </Badge>
-        </Breadcrumb.Item>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item key="upload">
+            <a href="/product/upload" style={itemStyle}>
+              UPLOAD
+            </a>
+          </Breadcrumb.Item>
 
-        <Breadcrumb.Item key="logout">
-          <a onClick={logoutHandler} style={itemStyle}>
-            LOGOUT
-          </a>
-        </Breadcrumb.Item>
-      </Breadcrumb>
+          <Breadcrumb.Item key="cart">
+            <Badge count={user.userData && user.userData.cart.length}>
+              <a href="/user/cart" style={itemStyle}>
+                COLLECTIONS &nbsp;&nbsp;&nbsp;
+                <HeartOutlined style={{ fontSize: "20px" }} />
+              </a>
+            </Badge>
+          </Breadcrumb.Item>
+
+          <Breadcrumb.Item key="logout">
+            <a onClick={logoutHandler} style={itemStyle}>
+              LOGOUT
+            </a>
+          </Breadcrumb.Item>
+        </Breadcrumb>
+      </div>
     );
   }
 }

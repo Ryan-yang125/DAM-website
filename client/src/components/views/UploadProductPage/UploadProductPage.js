@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography, Button, Form, message, Input, Icon } from "antd";
 import FileUpload from "../../utils/FileUpload";
 import Axios from "axios";
+import NavBar from "../NavBar/NavBar";
 const { Title } = Typography;
 const { TextArea } = Input;
 
@@ -88,61 +89,65 @@ function UploadProductPage(props) {
   };
 
   return (
-    <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <Title level={2}> Upload Your Sculpture</Title>
+    <div>
+      <NavBar />
+
+      <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <Title level={2}> Upload Your Sculpture</Title>
+        </div>
+
+        <Form onSubmit={onSubmit}>
+          {/* DropZone */}
+          <div>ImageUpload</div>
+          <FileUpload refreshFunction={updateImages} />
+          <div>ObjUpload</div>
+          <FileUpload refreshFunction={updateObjs} />
+          <br />
+          <br />
+          <Form.Item
+            rules={[{ required: true, message: "Please input the Title!" }]}
+          >
+            <label>Title</label>
+            <Input onChange={onTitleChange} value={TitleValue} />
+          </Form.Item>
+          <label>Artist</label>
+          <Input onChange={onArtistChange} value={ArtistValue} />
+          <br />
+          <br />
+          <label>Description</label>
+          <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
+          <br />
+          <br />
+          <label>Period</label>
+          <Input onChange={onPeriodChange} value={PeriodValue} />
+          <br />
+          <br />
+          <label>Material</label>
+          <Input onChange={onMaterialChange} value={MaterialValue} />
+          <br />
+          <br />
+          <label>Location</label>
+          <Input onChange={onLocationChange} value={LocationValue} />
+          <br />
+          <br />
+          <label>Dimension(Length*Width*Height)</label>
+          <Input onChange={onDimensionChange} value={DimensionValue} />
+          <br />
+          <br />
+          <select onChange={onCategorySelectChange} value={CategoryValue}>
+            {Category.map((item) => (
+              <option key={item.key} value={item.key}>
+                {item.value}{" "}
+              </option>
+            ))}
+          </select>
+          <br />
+          <br />
+
+          <Button onClick={onSubmit}>Submit</Button>
+        </Form>
       </div>
-
-      <Form onSubmit={onSubmit}>
-        {/* DropZone */}
-        <div>ImageUpload</div>
-        <FileUpload refreshFunction={updateImages} />
-        <div>ObjUpload</div>
-        <FileUpload refreshFunction={updateObjs} />
-        <br />
-        <br />
-        <Form.Item
-          rules={[{ required: true, message: "Please input the Title!" }]}
-        >
-          <label>Title</label>
-          <Input onChange={onTitleChange} value={TitleValue} />
-        </Form.Item>
-        <label>Artist</label>
-        <Input onChange={onArtistChange} value={ArtistValue} />
-        <br />
-        <br />
-        <label>Description</label>
-        <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
-        <br />
-        <br />
-        <label>Period</label>
-        <Input onChange={onPeriodChange} value={PeriodValue} />
-        <br />
-        <br />
-        <label>Material</label>
-        <Input onChange={onMaterialChange} value={MaterialValue} />
-        <br />
-        <br />
-        <label>Location</label>
-        <Input onChange={onLocationChange} value={LocationValue} />
-        <br />
-        <br />
-        <label>Dimension(Length*Width*Height)</label>
-        <Input onChange={onDimensionChange} value={DimensionValue} />
-        <br />
-        <br />
-        <select onChange={onCategorySelectChange} value={CategoryValue}>
-          {Category.map((item) => (
-            <option key={item.key} value={item.key}>
-              {item.value}{" "}
-            </option>
-          ))}
-        </select>
-        <br />
-        <br />
-
-        <Button onClick={onSubmit}>Submit</Button>
-      </Form>
     </div>
   );
 }

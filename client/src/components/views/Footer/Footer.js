@@ -12,7 +12,7 @@ function Footer() {
         fontSize: "1rem",
       }}
     >
-      <p> Thanks for threedscans project initiated by Oliver Laric.</p>
+      <p> Thanks for Oliver Laric.</p>
     </div>
   );
 }

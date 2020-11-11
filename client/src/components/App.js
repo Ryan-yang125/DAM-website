@@ -6,7 +6,6 @@ import HomePage from "./views/HomePage/HomePage";
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
-import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import UploadProductPage from "./views/UploadProductPage/UploadProductPage";
 import DetailProductPage from "./views/DetailProductPage/DetailProductPage";
@@ -16,12 +15,9 @@ import "fontsource-roboto";
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <NavBar />
       <div
         className="container"
         style={{
-          paddingTop: "75px",
-          minHeight: "calc(100vh - 80px)",
           fontFamily: "Roboto",
         }}
       >

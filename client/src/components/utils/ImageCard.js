@@ -48,7 +48,7 @@ export default function ImageCard(props) {
               style={{
                 width: "100%",
                 height: "100%",
-                transform: `${hovered ? "scale(0.95)" : "scale(1.0)"}`,
+                transform: `${hovered ? "scale(0.9)" : "scale(1.0)"}`,
                 transitionDuration: "0.6s",
               }}
               src={`http://localhost:5000/${props.product.images[0]}`}

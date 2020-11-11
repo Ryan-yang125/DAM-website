@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCartItems } from "../../../_actions/user_actions";
 import ImageSlider from "../../utils/ImageSlider";
+import NavBar from "../NavBar/NavBar";
 
 function CartPage(props) {
   const dispatch = useDispatch();
@@ -22,13 +23,15 @@ function CartPage(props) {
     }
   }, [props.user.userData]);
   return (
-    <div style={{ width: "85%", margin: "3rem auto" }}>
-      <h1>My Cart</h1>
-      <div>
-        <ImageSlider
-          products={props.user.cartDetail}
-          userlikes={props.user.userData}
-        />
+    <div>
+      <NavBar />
+      <div style={{ width: "85%", margin: "3rem auto" }}>
+        <div>
+          <ImageSlider
+            products={props.user.cartDetail}
+            userlikes={props.user.userData}
+          />
+        </div>
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ function CheckBox(props) {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </React.Fragment>
     ));
-  const header = props.list[0].name === "Animals" ? "Category" : "Period";
+  const header = props.list[0].name === "Animals" ? "Category" : "Size";
   return (
     <div>
       <Collapse defaultActiveKey={["0"]}>

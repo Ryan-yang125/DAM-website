@@ -5,10 +5,9 @@ import { Col, Card, Row, Button } from "antd";
 import { LoadingOutlined, HeartTwoTone } from "@ant-design/icons";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
-import RadioBox from "./Sections/RadioBox";
-import { Category, Period } from "./Sections/Datas";
+import { Category, Size } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
-
+import NavBar from "../NavBar/NavBar";
 function LandingPage(props) {
   const [Products, setProducts] = useState([]);
   const [Skip, setSkip] = useState(0);
@@ -18,7 +17,7 @@ function LandingPage(props) {
 
   const [Filters, setFilters] = useState({
     category: [],
-    period: [],
+    size: [],
   });
 
   useEffect(() => {
@@ -94,60 +93,63 @@ function LandingPage(props) {
   };
 
   return (
-    <div style={{ width: "75%", margin: "3rem auto" }}>
-      <div style={{ textAlign: "center" }}>
-        <h2> Explore as you like ❤️</h2>
-      </div>
-      {/* Search  */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          margin: "1rem auto",
-        }}
-      >
-        <SearchFeature refreshFunction={updateSearchTerms} />
-      </div>
-      {/* Filter  */}
-
-      <Row gutter={[16, 16]}>
-        <Col lg={12} xs={24}>
-          <CheckBox
-            list={Category}
-            handleFilters={(filters) => handleFilters(filters, "category")}
-          />
-        </Col>
-        <Col lg={12} xs={24}>
-          <CheckBox
-            list={Period}
-            handleFilters={(filters) => handleFilters(filters, "period")}
-          />
-        </Col>
-      </Row>
-
-      {Products.length === 0 ? (
+    <div>
+      <NavBar />
+      <div style={{ width: "75%", margin: "3rem auto" }}>
+        {/* Search  */}
         <div
           style={{
-            height: "300px",
-            marginTop: "100px",
-            textAlign: "center",
+            display: "flex",
+            justifyContent: "flex-end",
+            margin: "1rem auto",
           }}
         >
-          <LoadingOutlined style={{ fontSize: "100px" }} />
+          <SearchFeature refreshFunction={updateSearchTerms} />
         </div>
-      ) : (
-        <div>
-          <ImageSlider products={Products} userlikes={props.user.userData} />
-        </div>
-      )}
-      <br />
-      <br />
+        {/* Filter  */}
 
-      {PostSize >= Limit && (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button onClick={onLoadMore}>Load More</Button>
-        </div>
-      )}
+        <Row gutter={[16, 16]}>
+          <Col lg={12} xs={24}>
+            <CheckBox
+              list={Category}
+              handleFilters={(filters) => handleFilters(filters, "category")}
+            />
+          </Col>
+          <Col lg={12} xs={24}>
+            <CheckBox
+              list={Size}
+              handleFilters={(filters) => handleFilters(filters, "size")}
+            />
+          </Col>
+        </Row>
+        <br />
+        <br />
+        <br />
+        <br />
+        {Products.length === 0 ? (
+          <div
+            style={{
+              height: "300px",
+              marginTop: "100px",
+              textAlign: "center",
+            }}
+          >
+            <LoadingOutlined style={{ fontSize: "100px" }} />
+          </div>
+        ) : (
+          <div>
+            <ImageSlider products={Products} userlikes={props.user.userData} />
+          </div>
+        )}
+        <br />
+        <br />
+
+        {PostSize >= Limit && (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button onClick={onLoadMore}>Load More</Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

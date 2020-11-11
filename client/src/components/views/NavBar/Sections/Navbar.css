@@ -1,16 +1,1 @@
 @import "~antd/dist/antd.css";
-
-.menu {
-  padding: 0 20px;
-}
-
-.menu__logo {
-  width: 150px;
-  float: left;
-}
-
-.menu__logo a {
-  display: inline-block;
-  font-size: 30px;
-  padding: 19px 20px;
-}
