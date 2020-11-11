@@ -3,7 +3,7 @@ import { Typography, notification } from "antd";
 import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { addToCart, removeCartItem } from "../../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
-
+import { CodeSandboxOutlined } from "@ant-design/icons";
 function ProductInfo(props) {
   const { Title, Paragraph, Text, Link } = Typography;
   const dispatch = useDispatch();
@@ -61,14 +61,20 @@ function ProductInfo(props) {
             <HeartOutlined onClick={addToCarthandler} style={likeStyle} />
           )}
         </div>
-        <div>
+        <div
+          style={{
+            marginTop: "2px",
+            marginLeft: "10px",
+          }}
+        >
           <a
             href={`http://127.0.0.1:5500/test.html?obj=${encodeURIComponent(
               Product.objs &&
                 new URL(Product.objs[0], "http://localhost:5000/").href
             )}`}
+            style={{ color: "black", fontSize: "35px" }}
           >
-            Go!
+            <CodeSandboxOutlined />
           </a>
         </div>
       </div>

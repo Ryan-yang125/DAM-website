@@ -35,7 +35,7 @@ function RightMenu(props) {
           </Breadcrumb.Item>
           <Breadcrumb.Item key="app">
             <a href="/register" style={itemStyle}>
-              SIGNUP
+              REGISTER
             </a>
           </Breadcrumb.Item>
         </Breadcrumb>
