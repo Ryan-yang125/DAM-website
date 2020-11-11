@@ -1,5 +1,5 @@
 import React from "react";
-import bgVideo from "../../../assets/video/bg2.mp4";
+import bgVideo from "../../../assets/video/bg3.mp4";
 export default function HomePage() {
   return (
     <div>

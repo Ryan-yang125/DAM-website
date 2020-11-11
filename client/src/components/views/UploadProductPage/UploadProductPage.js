@@ -15,11 +15,14 @@ function UploadProductPage(props) {
   const [TitleValue, setTitleValue] = useState("");
   const [ArtistValue, setArtistValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
-  const [PeriodValue, setPeriodValue] = useState(0);
+  const [PeriodValue, setPeriodValue] = useState("");
   const [CategoryValue, setCategoryValue] = useState(1);
+  const [LocationValue, setLocationValue] = useState("");
+  const [MaterialValue, setMaterialValue] = useState("");
+  const [DimensionValue, setDimensionValue] = useState([0, 0, 0]);
   //TODO
   const [Images, setImages] = useState([]);
-
+  const [Objs, setObjs] = useState([]);
   const onTitleChange = (event) => {
     setTitleValue(event.currentTarget.value);
   };
@@ -38,21 +41,25 @@ function UploadProductPage(props) {
   const onCategorySelectChange = (event) => {
     setCategoryValue(event.currentTarget.value);
   };
-
+  const onLocationChange = (e) => {
+    setLocationValue(e.currentTarget.value);
+  };
+  const onMaterialChange = (e) => {
+    setMaterialValue(e.currentTarget.value);
+  };
+  const onDimensionChange = (e) => {
+    setDimensionValue(e.currentTarget.value);
+  };
   const updateImages = (newImages) => {
     setImages(newImages);
+  };
+  const updateObjs = (newObjs) => {
+    setObjs(newObjs);
   };
   const onSubmit = (event) => {
     event.preventDefault();
 
-    if (
-      !TitleValue ||
-      !DescriptionValue ||
-      !ArtistValue ||
-      !PeriodValue ||
-      !CategoryValue ||
-      !Images
-    ) {
+    if (!TitleValue || !CategoryValue || !Images || !Objs) {
       return alert("fill all the fields first!");
     }
 
@@ -62,8 +69,12 @@ function UploadProductPage(props) {
       description: DescriptionValue,
       artist: ArtistValue,
       images: Images,
+      objs: Objs,
       category: CategoryValue,
       period: PeriodValue,
+      location: LocationValue,
+      material: MaterialValue,
+      dimension: DimensionValue,
     };
 
     Axios.post("/api/product/uploadProduct", variables).then((response) => {
@@ -85,13 +96,16 @@ function UploadProductPage(props) {
       <Form onSubmit={onSubmit}>
         {/* DropZone */}
         <FileUpload refreshFunction={updateImages} />
+        <FileUpload refreshFunction={updateObjs} />
 
         <br />
         <br />
-        <label>Title</label>
-        <Input onChange={onTitleChange} value={TitleValue} />
-        <br />
-        <br />
+        <Form.Item
+          rules={[{ required: true, message: "Please input the Title!" }]}
+        >
+          <label>Title</label>
+          <Input onChange={onTitleChange} value={TitleValue} />
+        </Form.Item>
         <label>Artist</label>
         <Input onChange={onArtistChange} value={ArtistValue} />
         <br />
@@ -100,8 +114,20 @@ function UploadProductPage(props) {
         <TextArea onChange={onDescriptionChange} value={DescriptionValue} />
         <br />
         <br />
-        <label>Period(year)</label>
-        <Input onChange={onPeriodChange} value={PeriodValue} type="number" />
+        <label>Period</label>
+        <Input onChange={onPeriodChange} value={PeriodValue} />
+        <br />
+        <br />
+        <label>Material</label>
+        <Input onChange={onMaterialChange} value={MaterialValue} />
+        <br />
+        <br />
+        <label>Location</label>
+        <Input onChange={onLocationChange} value={LocationValue} />
+        <br />
+        <br />
+        <label>Dimension(Length*Width*Height)</label>
+        <Input onChange={onDimensionChange} value={DimensionValue} />
         <br />
         <br />
         <select onChange={onCategorySelectChange} value={CategoryValue}>

@@ -99,6 +99,16 @@ function LandingPage(props) {
       <div style={{ textAlign: "center" }}>
         <h2> Explore as you like ❤️</h2>
       </div>
+      {/* Search  */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          margin: "1rem auto",
+        }}
+      >
+        <SearchFeature refreshFunction={updateSearchTerms} />
+      </div>
       {/* Filter  */}
 
       <Row gutter={[16, 16]}>
@@ -116,24 +126,12 @@ function LandingPage(props) {
         </Col>
       </Row>
 
-      {/* Search  */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          margin: "1rem auto",
-        }}
-      >
-        <SearchFeature refreshFunction={updateSearchTerms} />
-      </div>
-
       {Products.length === 0 ? (
         <div
           style={{
-            display: "flex",
             height: "300px",
-            justifyContent: "center",
-            alignItems: "center",
+            marginTop: "100px",
+            textAlign: "center",
           }}
         >
           <LoadingOutlined style={{ fontSize: "100px" }} />
@@ -146,7 +144,7 @@ function LandingPage(props) {
       <br />
       <br />
 
-      {PostSize > Limit && (
+      {PostSize >= Limit && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button onClick={onLoadMore}>Load More</Button>
         </div>

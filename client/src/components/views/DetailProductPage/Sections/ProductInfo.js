@@ -17,7 +17,7 @@ function ProductInfo(props) {
     if (props.userlikes && props.userlikes.cart)
       if (props.userlikes.cart.length > 0)
         props.userlikes.cart.forEach((item) => {
-          if (item.id == props.detail._id) setIfLikes(true);
+          if (item.id === props.detail._id) setIfLikes(true);
         });
   }, [props.userlikes]);
   const addToCarthandler = () => {
@@ -60,6 +60,9 @@ function ProductInfo(props) {
           ) : (
             <HeartOutlined onClick={addToCarthandler} style={likeStyle} />
           )}
+        </div>
+        <div>
+          <a href="/">Go!</a>
         </div>
       </div>
       <br />

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Menu, Badge } from "antd";
+import { Menu, Badge, Breadcrumb } from "antd";
 import { HeartTwoTone, HeartOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { USER_SERVER } from "../../../Config";
@@ -22,40 +22,40 @@ function RightMenu(props) {
 
   if (user.userData && !user.userData.isAuth) {
     return (
-      <Menu mode={props.mode}>
-        <Menu.Item key="mail">
+      <Breadcrumb>
+        <Breadcrumb.Item key="mail">
           <a href="/login">SignIn</a>
-        </Menu.Item>
-        <Menu.Item key="app">
+        </Breadcrumb.Item>
+        <Breadcrumb.Item key="app">
           <a href="/register">SignUp</a>
-        </Menu.Item>
-      </Menu>
+        </Breadcrumb.Item>
+      </Breadcrumb>
     );
   } else {
     return (
-      <Menu
-        mode={props.mode}
-        style={{ backgroundColor: "#FFEEE4s", opacity: 1.0 }}
-      >
-        <Menu.Item key="landing">
-          <a href="/landing">Landing</a>
-        </Menu.Item>
-        <Menu.Item key="upload">
-          <a href="/product/upload">Upload</a>
-        </Menu.Item>
+      <Breadcrumb style={{ color: "#ffffff" }}>
+        <Breadcrumb.Item key="landing">
+          <a href="/landing" style={{ fontSize: 20 }}>
+            EXPLORE
+          </a>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item key="upload">
+          <a href="/product/upload">UPLOAD</a>
+        </Breadcrumb.Item>
 
-        <Menu.Item key="cart" style={{ paddingBottom: 3 }}>
+        <Breadcrumb.Item key="cart">
           <Badge count={user.userData && user.userData.cart.length}>
-            <a href="/user/cart" style={{ marginRight: -22, color: "#667777" }}>
-              <HeartOutlined style={{ fontSize: 30, marginBottom: 3 }} />
+            <a href="/user/cart">
+              COLLECTIONS
+              <HeartOutlined style={{ fontSize: 30 }} />
             </a>
           </Badge>
-        </Menu.Item>
+        </Breadcrumb.Item>
 
-        <Menu.Item key="logout">
-          <a onClick={logoutHandler}>Logout</a>
-        </Menu.Item>
-      </Menu>
+        <Breadcrumb.Item key="logout">
+          <a onClick={logoutHandler}>LOGOUT</a>
+        </Breadcrumb.Item>
+      </Breadcrumb>
     );
   }
 }

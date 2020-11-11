@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import RightMenu from "./Sections/RightMenu";
 import "./Sections/Navbar.css";
 import "fontsource-roboto";
-import Logo from "../../../assets/img/logo.png";
 function NavBar() {
   return (
     <div
@@ -16,13 +15,22 @@ function NavBar() {
     >
       <div className="menu__logo">
         <a href="/">
-          <div>Sculplay</div>
+          <div
+            style={{
+              color: "#000000",
+              font: "italic 1.2em Fira Sans, serif",
+              marginLeft: 20,
+              marginTop: 20,
+            }}
+          >
+            SCULPLAY
+          </div>
         </a>
       </div>
       <div className="menu__container">
         <a href="/"></a>
         <div className="menu_rigth">
-          <RightMenu mode="horizontal" />
+          <RightMenu />
         </div>
       </div>
     </div>

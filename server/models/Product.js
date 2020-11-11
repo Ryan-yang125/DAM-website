@@ -41,8 +41,12 @@ const productSchema = mongoose.Schema(
       type: String,
     },
     dimension: {
-      type: Object,
-      default: { length: "", width: "", height: "" },
+      type: Array,
+      default: [],
+    },
+    objs: {
+      type: Array,
+      default: [],
     },
   },
   { timestamps: true }
