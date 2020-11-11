@@ -62,7 +62,17 @@ function ProductInfo(props) {
           )}
         </div>
         <div>
-          <a href="/">Go!</a>
+          <a
+            href={`http://127.0.0.1:5500/test.html?obj=${encodeURIComponent(
+              Product.objs &&
+                new URL(
+                  "uploads/1605061399668_Townley.OBJ",
+                  "http://localhost:5000/"
+                ).href
+            )}`}
+          >
+            Go!
+          </a>
         </div>
       </div>
       <br />
