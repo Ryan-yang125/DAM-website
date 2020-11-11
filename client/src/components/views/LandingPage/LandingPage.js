@@ -8,7 +8,6 @@ import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
 import { Category, Period } from "./Sections/Datas";
 import SearchFeature from "./Sections/SearchFeature";
-import bgVideo from "../../../assets/video/bg1.mp4";
 
 function LandingPage(props) {
   const [Products, setProducts] = useState([]);

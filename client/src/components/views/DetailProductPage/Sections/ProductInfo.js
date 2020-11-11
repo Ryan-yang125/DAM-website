@@ -48,7 +48,7 @@ function ProductInfo(props) {
       <div className="info" style={{ display: "flex" }}>
         <div className="basic-info">
           <div>
-            <h3>{`${Product.artist || "Unknown"}`}</h3>
+            <h3>{`${Product.artist || "Placeholder"}`}</h3>
           </div>
           <div>
             <h4>{`${Product.title || "Unknown"}`}</h4>
@@ -65,10 +65,7 @@ function ProductInfo(props) {
           <a
             href={`http://127.0.0.1:5500/test.html?obj=${encodeURIComponent(
               Product.objs &&
-                new URL(
-                  "uploads/1605061399668_Townley.OBJ",
-                  "http://localhost:5000/"
-                ).href
+                new URL(Product.objs[0], "http://localhost:5000/").href
             )}`}
           >
             Go!
@@ -76,7 +73,24 @@ function ProductInfo(props) {
         </div>
       </div>
       <br />
+      <Title level={4}>Introduction:</Title>
       <Text>{Product.description}</Text>
+      <Title level={4}>Dimensions:</Title>
+      <div>
+        <h4>{`${Product.dimensions}`}</h4>
+      </div>
+      <Title level={4}>Locations:</Title>
+      <div>
+        <h4>{`${Product.location}`}</h4>
+      </div>
+      <Title level={4}>Material:</Title>
+      <div>
+        <h4>{`${Product.material}`}</h4>
+      </div>
+      <Title level={4}>Period:</Title>
+      <div>
+        <h4>{`${Product.period}`}</h4>
+      </div>
     </div>
   );
 }

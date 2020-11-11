@@ -99,7 +99,6 @@ function UploadProductPage(props) {
         <FileUpload refreshFunction={updateImages} />
         <div>ObjUpload</div>
         <FileUpload refreshFunction={updateObjs} />
-
         <br />
         <br />
         <Form.Item
