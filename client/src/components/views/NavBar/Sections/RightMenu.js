@@ -19,7 +19,9 @@ function RightMenu(props) {
       }
     });
   };
-
+  const itemStyle = {
+    fontStyle: "oblique 40deg",
+  };
   if (user.userData && !user.userData.isAuth) {
     return (
       <Breadcrumb>
@@ -33,27 +35,31 @@ function RightMenu(props) {
     );
   } else {
     return (
-      <Breadcrumb style={{ color: "#ffffff" }}>
+      <Breadcrumb style={{ color: "#ffffff", marginTop: "10px" }} separator=" ">
         <Breadcrumb.Item key="landing">
-          <a href="/landing" style={{ fontSize: 20 }}>
+          <a href="/landing" style={itemStyle}>
             EXPLORE
           </a>
         </Breadcrumb.Item>
         <Breadcrumb.Item key="upload">
-          <a href="/product/upload">UPLOAD</a>
+          <a href="/product/upload" style={itemStyle}>
+            UPLOAD
+          </a>
         </Breadcrumb.Item>
 
         <Breadcrumb.Item key="cart">
           <Badge count={user.userData && user.userData.cart.length}>
-            <a href="/user/cart">
+            <a href="/user/cart" style={itemStyle}>
               COLLECTIONS
-              <HeartOutlined style={{ fontSize: 30 }} />
+              <HeartOutlined style={itemStyle} />
             </a>
           </Badge>
         </Breadcrumb.Item>
 
         <Breadcrumb.Item key="logout">
-          <a onClick={logoutHandler}>LOGOUT</a>
+          <a onClick={logoutHandler} style={itemStyle}>
+            LOGOUT
+          </a>
         </Breadcrumb.Item>
       </Breadcrumb>
     );
