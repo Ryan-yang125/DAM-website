@@ -34,12 +34,10 @@ function DetailProductPage(props) {
 
         <br />
 
-        <Row gutter={[16, 16]}>
-          <Col span={24}>
-            <ProductImage detail={Product} />
-          </Col>
+        {/* <Row gutter={[16, 16]}>
+          <Col span={24}><ProductImage detail={Product} /></Col>
         </Row>
-        <Divider />
+        <Divider /> */}
         <ProductInfo detail={Product} userlikes={props.user.userData} />
       </div>
     </div>

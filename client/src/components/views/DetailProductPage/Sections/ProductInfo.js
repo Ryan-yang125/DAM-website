@@ -5,7 +5,7 @@ import { addToCart, removeCartItem } from "../../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 import { CodeSandboxOutlined } from "@ant-design/icons";
 function ProductInfo(props) {
-  const { Title, Paragraph, Text, Link } = Typography;
+  const { Text } = Typography;
   const dispatch = useDispatch();
   const [Product, setProduct] = useState({});
   const [IfLikes, setIfLikes] = useState(false);
@@ -45,6 +45,20 @@ function ProductInfo(props) {
   };
   return (
     <div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <iframe
+          src={`http://127.0.0.1:5500/test.html?obj=${encodeURIComponent(
+            Product.objs &&
+              new URL(Product.objs[0], "http://localhost:5000/").href
+          )}`}
+          height="500"
+          width="500"
+          allow="fullscreen"
+          frameBorder="0"
+        ></iframe>
+      </div>
+      <br />
+      <br />
       <div className="info" style={{ display: "flex" }}>
         <div className="basic-info">
           <div>
