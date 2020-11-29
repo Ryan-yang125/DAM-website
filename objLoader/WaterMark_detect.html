@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>WaterMark</title>
+</head>
+
+<body>
+
+    <canvas id="myCanvas" width="2000" height="1000">
+        您的浏览器不支持 HTML5 canvas 标签。</canvas>
+
+    <script>
+        var ctx = document.getElementById("myCanvas").getContext("2d");
+        //var img = document.getElementById("scream");
+
+        var img = new Image();
+        var originalData;
+        img.onload = function () {
+                ctx.drawImage(img, 0, 0);
+                // 获取指定区域的canvas像素信息
+                 originalData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
+                 var data = originalData.data;
+            for (var i = 0; i < data.length; i++) {
+                if (i % 4 == 0) {//处理r通道
+                    if (data[i] % 2 == 0) {
+                        data[i] = 20;
+                        data[i + 1] = 20;
+                        data[i + 2] = 20;
+                    } else {
+                        data[i] = 255;
+                        data[i + 1] = 255;
+                        data[i + 2] = 255;
+                    }
+                } else if (i % 4 == 3) {
+                    //alpha通道不做处理
+                    continue;
+                } 
+            }
+            console.log(data);
+            console.log(originalData);
+            ctx.putImageData(originalData, 0, 0);
+                // console.log(originalData);
+            };
+        img.src = './images/1.png';//此处为需要检测水印的路径
+    </script>
+
+</body>
+
+</html>

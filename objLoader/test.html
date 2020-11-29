@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>three.js</title>
+    <embed src="assets/011.mp3" hidden="true" autostart="true" loop="true" />
+    <style>
+      body {
+        max-width: 1200px;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        background-size: cover;
+        background-position: center;
+        background-size: 100% 100%;
+        background-attachment: fixed;
+      }
+
+      canvas {
+        width: 50%;
+        height: 50%;
+        border: 1px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script src="js/build/three.min.js"></script>
+    <script src="js/build/three.js"></script>
+    <script src="js/examples/js/loaders/OBJLoader.js"></script>
+    <script src="js/examples/js/controls/OrbitControls.js"></script>
+    <script src="js/examples/js/libs/dat.gui.min.js"></script>
+    <script src="js/examples/js/libs/stats.min.js"></script>
+    <script src="js/my/init_three.js"></script>
+    <script src="js/my/load_model.js"></script>
+    <script src="js/my/shot.js"></script>
+    <script src="js/my/raycaster.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+      window.onload = function () {
+        canvasObserver();
+      };
+
+      function draw() {
+        initThree();
+        initModel();
+        animate();
+        //window.onresize = onWindowResize;
+        window.addEventListener("mousemove", onMouseMove, false);
+      }
+
+      function render() {
+        // 通过摄像机和鼠标位置更新射线
+        raycaster.setFromCamera(mouse, camera);
+
+        // 计算物体和射线的焦点
+        const intersects = raycaster.intersectObjects(scene.children);
+
+        //将第一个触发事件的模型改变为红色
+        if (intersects.length > 0) {
+          //intersects[0].object.material.color.set(0xff0000);
+        }
+
+        renderer.render(scene, camera);
+      }
+
+      //窗口变动触发的函数
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        render();
+        canvasObserver();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      function animate() {
+        //更新控制器
+        render();
+        //更新性能插件
+        //stats.update();
+        controls.update();
+        requestAnimationFrame(animate);
+      }
+
+      draw();
+    </script>
+
+    <style>
+      .btn {
+        font-family: Century Gothic;
+        font-size: 15px;
+        border-radius: 10px;
+        position: absolute;
+        width: 50px;
+        height: 30px;
+        padding: 0;
+        left: 45%;
+        top: 50px;
+        margin-top: 60%;
+        background-color: rgb(238, 238, 238);
+      }
+
+      .btn:hover {
+        border-radius: 10px;
+        background-color: #fff;
+        color: #000;
+        cursor: pointer;
+      }
+
+      .watermark {
+        position: absolute;
+        top: 100px;
+        color: black;
+      }
+
+      .head {
+        font-family: Century Gothic;
+        color: #555;
+      }
+    </style>
+  </body>
+  <div class="shot">
+    <button class="btn" type="button" onclick="shot()" id="button1">
+      shot
+    </button>
+    <!-- <button type="button" onclick="stop()" id="button1">stop</button> -->
+  </div>
+  <div class="head">
+    <h1>Screen Shot（with watermark）</h1>
+  </div>
+  <script>
+    //不能移动到js文件中，会导致显式水印被覆盖，避免用户截图攻击隐藏水印
+    var canvas = document.createElement("canvas");
+    canvas.width = 2000;
+    canvas.height = 2000;
+    canvas.id = "myCanvas";
+    var ctx = canvas.getContext("2d");
+    document.body.appendChild(canvas);
+  </script>
+</html>
