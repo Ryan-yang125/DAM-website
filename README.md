@@ -31,5 +31,8 @@
   npm run dev
   ```
 
+TODO:
+- merge objloader into client
+- or just use gif
   
 
