@@ -30,9 +30,18 @@
   cd ..
   npm run dev
   ```
+Functions：
+- User management
+  - login/logout/register
+  - likes/favorite
+  - download
+- filter by meta data
+- Home Pages
+- Landing Pages
+- Detail Pages
+- Favorite Pages
+- 3D wander Pages
 
 TODO:
 - merge objloader into client
 - or just use gif
-  
-
