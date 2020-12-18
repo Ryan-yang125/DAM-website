@@ -1,8 +1,17 @@
-**This is a very simply MERN Web App**
+**This is a very simple MERN Web App**
+
 ![1](img/1.png)
+<center><b>HomePage</b></center>
+
 ![2](img/2.png)
+<center><b>LandingPage</b></center>
+
 ![3](img/3.png)
+<center><b>DetailPage1</b></center>
+
 ![4](img/4.png)
+<center><b>DetailPage2</b></center>
+
 **Tech Stack:**
 
 - Client:
